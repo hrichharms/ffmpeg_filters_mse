@@ -21,4 +21,4 @@ if __name__ == "__main__":
     for filter_name in filters:
         for filename in listdir(config.original_audio_dir):
             system(f"ffmpeg -i {join(config.original_audio_dir, filename)} \
--af {filter_name} distorted_audio/{filter_name}_{filename}")
+-af {filter_name} {config.distorted_audio_dir}/{filter_name}_{filename}")
