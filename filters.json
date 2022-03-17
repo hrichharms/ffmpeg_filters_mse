@@ -1,4 +1,11 @@
 [
     "acompressor",
-    "acrusher"
+    "acrusher",
+    "adenorm",
+    "afftdn",
+    "afwtdn",
+    "aecho",
+    "aphaser",
+    "dcshift",
+    "afreqshift"
 ]
