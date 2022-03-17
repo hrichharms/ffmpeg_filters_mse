@@ -48,7 +48,7 @@ if __name__ == "__main__":
         filter_name: 0
         for filter_name in filters
     }
-    filter_spectral_mse = {
+    filter_frequency_mse = {
         filter_name: 0
         for filter_name in filters
     }
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                     o_segment,
                     d_data[filter_name][k: k + config.segment_len]
                 )
-                filter_spectral_mse[filter_name] += mse(
+                filter_frequency_mse[filter_name] += mse(
                     dct(o_segment),
                     dct(d_data[filter_name][k: k + config.segment_len])
                 )
@@ -89,9 +89,9 @@ if __name__ == "__main__":
         key: val / segment_count 
         for key, val in filter_temporal_mse.items()
     }
-    filter_spectral_mse = {
+    filter_frequency_mse = {
         key: val / segment_count
-        for key, val in filter_spectral_mse.items()
+        for key, val in filter_frequency_mse.items()
     }
 
     print("\n".join(
@@ -100,14 +100,14 @@ if __name__ == "__main__":
     ), end="\n\n")
     print("\n".join(
         f"{key}: {val}"
-        for key, val in filter_spectral_mse.items()
+        for key, val in filter_frequency_mse.items()
     ))
 
     with open(config.output_filename, "w") as output_file:
         dump(
             {
                 "temporal": filter_temporal_mse,
-                "spectral": filter_spectral_mse
+                "frequency": filter_frequency_mse
             },
             output_file
         )

@@ -22,12 +22,12 @@ if __name__ == "__main__":
     ax1.set_ylabel("MSE")
     ax1.bar(temporal_mse.keys(), temporal_mse.values())
 
-    spectral_mse = output["spectral"]
-    print(spectral_mse)
-    fig2 = pyplot.figure(f"Spectral Mean Square Error (MSE)")
+    frequency_mse = output["frequency"]
+    print(frequency_mse)
+    fig2 = pyplot.figure(f"frequency Mean Square Error (MSE)")
     ax2 = fig2.add_subplot(111)
     ax2.set_xlabel("Filter")
     ax2.set_ylabel("MSE")
-    ax2.bar(spectral_mse.keys(), spectral_mse.values())
+    ax2.bar(frequency_mse.keys(), frequency_mse.values())
 
     pyplot.show()
