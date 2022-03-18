@@ -36,13 +36,13 @@ Configuration file for `apply_filters.py` and `mse.py`
 
 | key                 | default         | description                                                                   |
 |---------------------|-----------------|-------------------------------------------------------------------------------|
-| filters_filename    | filters.json    | filename of filters list in JSON file format                                  |
+| filters_filename    | filters.json    | filename of JSON formatted filters list in                                    |
 | segment_len         | 262144          | number of audio samples in each analyzed segment                              |
 | sample_skips        | 262144          | number of samples skipped between beginnings of analyzed segments             |
 | bit_depth           | 16              | bit depth of analyzed audio                                                   |
 | original_audio_dir  | original_audio  | relative path to search for original audio                                    |
 | filtered_audio_dir  | filtered_audio  | relative path to write filtered audio data to                                 |
-| output_filename     | output.json     | filename JSON formatted mean square error output                              |
+| output_filename     | output.json     | filename of JSON formatted mean square error output                           |
 
 ### config.py
 
