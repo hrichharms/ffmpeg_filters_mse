@@ -72,13 +72,13 @@ Loads configuration from `CONFIG_FILENAME`, read MSE outputs from `output_filena
 
 The following results were calculated from 3 hours of audio extracted from a Twitch VOD.
 
-| filter      | MSE (temporal)     | MSE (frequency)    |
-|-------------|--------------------|--------------------|
-| acompressor | 419.5447047722049  | 769325.3616135248  |
-| acrusher    | 128.31195087665463 | 788.4744883700115  |
-| aecho       | 1973.808181613829  | 11476890.952585308 |
-| aphaser     | 2140.157159476164  | 7514830.79328153   |
-| alimiter    | 1589.4807644937096 | 33103402.4035865   |
+| filter      | MSE (temporal domain) | MSE (frequency domain) |
+|-------------|-----------------------|------------------------|
+| acompressor | 419.5447047722049     | 769325.3616135248      |
+| acrusher    | 128.31195087665463    | 788.4744883700115      |
+| aecho       | 1973.808181613829     | 11476890.952585308     |
+| aphaser     | 2140.157159476164     | 7514830.79328153       |
+| alimiter    | 1589.4807644937096    | 33103402.4035865       |
 
 ### Temporal Domain MSE
 
