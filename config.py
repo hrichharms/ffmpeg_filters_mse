@@ -13,7 +13,7 @@ class Config:
     sample_skips: int
     bit_depth: int
     original_audio_dir: str
-    distorted_audio_dir: str
+    filtered_audio_dir: str
     output_filename: str
 
 
@@ -26,6 +26,6 @@ def load_config(filename: str) -> Config:
         config_data["sample_skips"],
         config_data["bit_depth"],
         config_data["original_audio_dir"],
-        config_data["distorted_audio_dir"],
+        config_data["filtered_audio_dir"],
         config_data["output_filename"]
     )

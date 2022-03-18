@@ -25,7 +25,7 @@ Heatmap of original DCT coefficients
     x-axis -> frequency
     y-axis -> value
 for filter in filters
-    Heatmap of distorted DCT coefficients
+    Heatmap of filtered DCT coefficients
         x-axis -> frequency
         y-axis -> value
     Heatmap of changes
@@ -64,7 +64,7 @@ if __name__ == "__main__":
             print(filter_name)
             _dsr, d_data[filter_name] = read(
                 join(
-                    config.distorted_audio_dir,
+                    config.filtered_audio_dir,
                     f"{filter_name}_{original_filename}"
                 ))
 

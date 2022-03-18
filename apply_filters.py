@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     config = load_config(CONFIG_FILENAME)
 
-    if not isdir(config.distorted_audio_dir):
-        mkdir(config.distorted_audio_dir)
+    if not isdir(config.filtered_audio_dir):
+        mkdir(config.filtered_audio_dir)
 
     with open(config.filters_filename) as filters_file:
         filters = load(filters_file)
@@ -21,4 +21,4 @@ if __name__ == "__main__":
     for filter_name in filters:
         for filename in listdir(config.original_audio_dir):
             system(f"ffmpeg -i {join(config.original_audio_dir, filename)} \
--af {filter_name} {config.distorted_audio_dir}/{filter_name}_{filename}")
+-af {filter_name} {config.filtered_audio_dir}/{filter_name}_{filename}")

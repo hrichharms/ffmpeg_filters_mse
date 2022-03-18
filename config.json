@@ -4,6 +4,6 @@
     "sample_skips": 262144,
     "bit_depth": 16,
     "original_audio_dir": "original_audio",
-    "distorted_audio_dir": "distorted_audio",
+    "filtered_audio_dir": "filtered_audio",
     "output_filename": "output.json"
 }
