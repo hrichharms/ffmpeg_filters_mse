@@ -20,23 +20,6 @@ def mse(a: ndarray, b: ndarray) -> float:
     return ((a - b) ** 2).mean()
 
 
-"""
-Heatmap of original DCT coefficients
-    x-axis -> frequency
-    y-axis -> value
-for filter in filters
-    Heatmap of filtered DCT coefficients
-        x-axis -> frequency
-        y-axis -> value
-    Heatmap of changes
-        x-axis -> frequency
-        y-axis -> change
-    Histogram of changes (averaged across all frequencies)
-Bar Graph of filters sorted by frequency-domain mean square error
-    - this gets dumped to output json file as well
-"""
-
-
 if __name__ == "__main__":
 
     config = load_config(CONFIG_FILENAME)
