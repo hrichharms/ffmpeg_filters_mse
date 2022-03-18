@@ -28,11 +28,11 @@ if __name__ == "__main__":
         filters = load(filters_file)
 
     filter_temporal_mse = {
-        filter_name: 0
+        filter_name: [0, 0]
         for filter_name in filters
     }
     filter_frequency_mse = {
-        filter_name: 0
+        filter_name: [0, 0]
         for filter_name in filters
     }
     segment_count = 0
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         d_data = {}
 
         for filter_name in filters:
-            print(filter_name)
+            print(f"{filter_name}_{original_filename}")
             _dsr, d_data[filter_name] = read(
                 join(
                     config.filtered_audio_dir,
@@ -57,32 +57,43 @@ if __name__ == "__main__":
         ):
             print(f"{k / (o_data.shape[0] - config.segment_len) * 100:.2f} %", end="\n")
             o_segment = o_data[k: k + config.segment_len]
+            o_segment_l, o_segment_r = o_segment[:, 0], o_segment[:, 1]
             for filter_name in filters:
-                filter_temporal_mse[filter_name] += mse(
-                    o_segment,
-                    d_data[filter_name][k: k + config.segment_len]
+                filter_temporal_mse[filter_name][0] += mse(
+                    o_segment_l,
+                    d_data[filter_name][k: k + config.segment_len, 0]
                 )
-                filter_frequency_mse[filter_name] += mse(
-                    dct(o_segment),
-                    dct(d_data[filter_name][k: k + config.segment_len])
+                filter_temporal_mse[filter_name][1] += mse(
+                    o_segment_r,
+                    d_data[filter_name][k: k + config.segment_len, 1]
                 )
+
+                filter_frequency_mse[filter_name][0] += mse(
+                    dct(o_segment_l),
+                    dct(d_data[filter_name][k: k + config.segment_len, 0])
+                )
+                filter_frequency_mse[filter_name][1] += mse(
+                    dct(o_segment_r),
+                    dct(d_data[filter_name][k: k + config.segment_len, 1])
+                )
+
             segment_count += 1
 
     filter_temporal_mse = {
-        key: val / segment_count 
-        for key, val in filter_temporal_mse.items()
+        key: [l_val / segment_count, r_val / segment_count] 
+        for key, (l_val, r_val) in filter_temporal_mse.items()
     }
     filter_frequency_mse = {
-        key: val / segment_count
-        for key, val in filter_frequency_mse.items()
+        key: [l_val / segment_count, r_val / segment_count]
+        for key, (l_val, r_val) in filter_frequency_mse.items()
     }
 
     print("\n".join(
-        f"{key}: {val}"
+        f"{key}: {val[0]}, {val[1]}"
         for key, val in filter_temporal_mse.items()
     ), end="\n\n")
     print("\n".join(
-        f"{key}: {val}"
+        f"{key}: {val[0]}, {val[1]}"
         for key, val in filter_frequency_mse.items()
     ))
 
