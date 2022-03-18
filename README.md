@@ -12,7 +12,7 @@ Calculates and visualizes the mean squared error of ffmpeg audio filters in the 
 ## Usage
 
 1. Run `convert.sh` if audio files are not in .wav format
-2. Run `apply_filters.py` to apply create filtered audio files
+2. Run `apply_filters.py` to create filtered audio files
 3. Run `mse.py` to calculate the mean square error for each filter
 4. Run `visualize.py` to visualize the results as bar graphs
 
@@ -20,7 +20,7 @@ Calculates and visualizes the mean squared error of ffmpeg audio filters in the 
 
 ### convert.sh
 
-Small shellscript that converts any audio files in `original_audio` into a .wav file using default ffmpeg conversion
+Converts any audio files in `original_audio` into a .wav file using default ffmpeg conversion and deletes originals.
 
 #### Usage
 
