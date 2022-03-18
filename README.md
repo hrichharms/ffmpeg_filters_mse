@@ -41,7 +41,7 @@ Configuration file for `apply_filters.py` and `mse.py`
 | sample_skips        | 262144          | number of samples skipped between beginnings of analyzed segments             |
 | bit_depth           | 16              | bit depth of analyzed audio                                                   |
 | original_audio_dir  | original_audio  | relative path to search for original audio                                    |
-| filtered_audio_dir  | filtered_audio  | relative path to write filtered audio data to                                 |
+| filtered_audio_dir  | filtered_audio  | relative path of filtered audio                                               |
 | output_filename     | output.json     | filename of JSON formatted mean square error output                           |
 
 ### config.py
