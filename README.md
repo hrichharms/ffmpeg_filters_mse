@@ -7,7 +7,7 @@ Calculates and visualizes the mean squared error of ffmpeg audio filters in the 
 1. Install [ffmpeg](https://ffmpeg.org/download.html)
 2. Install required Python packages ( `pip3 install -r requirements.txt` )
 3. Create `original_audio` directory
-4. Put original audio in `original_audio` directory
+4. Put audio in `original_audio` directory
 
 ## Usage
 
