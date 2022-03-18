@@ -2,11 +2,11 @@
 
 Calculates and visualizes the mean squared error of ffmpeg audio filters in the temporal domain and frequency domain.
 
-## Setup
+## Setup:
 
 ### FFMPEG Installation
 
-## Repository Files
+## Repository Files:
 
 ### convert.sh
 
@@ -62,4 +62,4 @@ Loads configuration from `CONFIG_FILENAME`,
 
 <img src="https://github.com/hrichharms/ffmpeg_filters_mse/blob/master/figures/Frequency_Mean_Square_Error_(MSE).png?raw=true" alt="Mean Squared Error in the Frequency Domain" width="400"/>
 
-## TODO
+## TODO:
