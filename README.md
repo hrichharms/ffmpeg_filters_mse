@@ -1,6 +1,6 @@
 # ffmpeg_filters_mse
 
-Calculates and visualizes the mean squared error of ffmpeg audio filters in the temporal domain and frequency domain.
+Calculates and visualizes the mean squared error of [ffmpeg audio filters](https://ffmpeg.org/ffmpeg-filters.html) in the temporal domain and frequency domain.
 
 ## Setup
 
