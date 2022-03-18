@@ -2,11 +2,21 @@
 
 Calculates and visualizes the mean squared error of ffmpeg audio filters in the temporal domain and frequency domain.
 
-## Setup:
+## Setup
 
-### FFMPEG Installation
+1. Install [ffmpeg](https://ffmpeg.org/download.html)
+2. Install required Python packages ( `pip3 install -r requirements.txt` )
+3. Create `original_audio` directory
+4. Put original audio in `original_audio` directory
 
-## Repository Files:
+## Usage
+
+1. Run `convert.sh` if audio files are not in .wav format
+2. Run `apply_filters.py` to apply create filtered audio files
+3. Run `mse.py` to calculate the mean square error for each filter
+4. Run `visualize.py` to visualize the results as bar graphs
+
+## Repository Files
 
 ### convert.sh
 
@@ -22,7 +32,7 @@ JSON formatted list of ffmpeg audio filters
 
 ### config.json
 
-Configuration file for `apply_filters.py` and `stats_calc.py`
+Configuration file for `apply_filters.py` and `mse.py`
 
 | key                 | default         | description                                                                   |
 |---------------------|-----------------|-------------------------------------------------------------------------------|
@@ -31,7 +41,7 @@ Configuration file for `apply_filters.py` and `stats_calc.py`
 | sample_skips        | 262144          | number of samples skipped between beginnings of analyzed segments             |
 | bit_depth           | 16              | bit depth of analyzed audio                                                   |
 | original_audio_dir  | original_audio  | relative path to search for original audio                                    |
-| distorted_audio_dir | distorted_audio | relative path to write filtered audio data to                                 |
+| filtered_audio_dir  | filtered_audio  | relative path to write filtered audio data to                                 |
 | output_filename     | output.json     | filename to write temporal and frequency mean squared error to in JSON format |
 
 ### config.py
@@ -40,19 +50,35 @@ Defines `CONFIG_FILENAME`, `Config` class, and associated JSON loader function (
 
 ### apply_filters.py
 
-Loads configuration from `CONFIG_FILENAME`, applies list of ffmpeg audio filters from `filters_filename` to .wav files in `original_audio_dir` and writes resulting audio files to `distorted_audio_dir`.
+Loads configuration from `CONFIG_FILENAME`, applies list of ffmpeg audio filters from `filters_filename` to .wav files in `original_audio_dir` and writes resulting audio files to `filtered_audio_dir`.
 
 #### Usage
 
 `python3 apply_filters.py`
 
-### stats_calc.py
+### mse.py
 
-Loads configuration from `CONFIG_FILENAME`,
+Loads configuration from `CONFIG_FILENAME` and calculates the average MSE of sequences of length `sequence_len` in the temporal domain and frequency domain ([DCT-II](https://en.wikipedia.org/wiki/Discrete_cosine_transform#DCT-II)) between original audio segments and their filtered counterparts. Resulting MSEs are dumped to `output_filename` in JSON format.
+
+#### Usage
+
+`python3 mse.py`
 
 ### visualize.py
 
-## Example Figures
+Loads configuration from `CONFIG_FILENAME`, read MSE outputs from `output_filename` and plot the results as bar graphs.
+
+## Example Results
+
+The following results were calculated from 3 hours of audio extracted from a Twitch VOD.
+
+| filter      | MSE (temporal)     | MSE (frequency)    |
+|-------------|--------------------|--------------------|
+| acompressor | 419.5447047722049  | 769325.3616135248  |
+| acrusher    | 128.31195087665463 | 788.4744883700115  |
+| aecho       | 1973.808181613829  | 11476890.952585308 |
+| aphaser     | 2140.157159476164  | 7514830.79328153   |
+| alimiter    | 1589.4807644937096 | 33103402.4035865   |
 
 ### Temporal Domain MSE
 
@@ -62,4 +88,6 @@ Loads configuration from `CONFIG_FILENAME`,
 
 <img src="https://github.com/hrichharms/ffmpeg_filters_mse/blob/master/figures/Frequency_Mean_Square_Error_(MSE).png?raw=true" alt="Mean Squared Error in the Frequency Domain" width="400"/>
 
-## TODO:
+## TODO
+- Add more audio filters
+- Add better documentation for example results
